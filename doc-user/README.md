@@ -135,8 +135,11 @@ bash tensorflow/contrib/makefile/build_all_linux.sh
 ![image](https://user-images.githubusercontent.com/36963108/164013113-1c2bd70a-abec-4ee9-9756-e94b8453d803.png)
 
 
-
-
+wget https://github.com/google/googletest/archive/release-1.8.0.tar.gz
+wget https://storage.googleapis.com/mirror.tensorflow.org/github.com/google/nsync/archive/1.22.0.tar.gz
+wget https://github.com/google/re2/archive/506cfa4bffd060c06ec338ce50ea3468daa6c814.tar.gz
+wget https://storage.googleapis.com/mirror.tensorflow.org/bitbucket.org/eigen/eigen/get/49177915a14a.tar.gz
+wget https://storage.googleapis.com/mirror.tensorflow.org/github.com/google/gemmlowp/archive/12fed0cd7cfcd9e169bf1925bc3a7a58725fdcc3.zip
 
 
 
