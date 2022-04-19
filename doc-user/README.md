@@ -103,8 +103,9 @@ protoc --version
 cd protobuf-3.6.1/
 make uninstall
 
+# 由于没有使用gpu版本的，所以./configure的过程中都是选择N,因此此C++TF配置的CPU版本
 cd tensorflow
-./configure
+./configure     
 
 # 按照下面图片的方式执行，只要CUDA support选择Y，其他基本上都是默认和N，其中默认是10.0，
 # 如果不是在后面写上对应的版本，我cudnn是7.6.3，默认是7，直接默认也是OK的。设置完成之后需要编译
