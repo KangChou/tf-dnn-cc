@@ -123,6 +123,20 @@ bazel build --config=opt //tensorflow:libtensorflow_cc.so
 ![image](https://user-images.githubusercontent.com/36963108/164010125-2db5975a-a4bb-4785-8b37-1fb717f007ac.png)
 
 
+## 安装其他C++依赖包
+以上的TF C++构建完成之后，在所在的路径下找到：tensorflow/tensorflow/contrib/makefile# \
+注意：build_all_linux.sh这个命令是包含./download_dependencies.sh，但是单独执行./download_dependencies.sh这个命令不成功，该命令执行成功后，在tensorflow-1.15/tensorflow/contrib/makefile目录下：downloads文件夹下存放第三方依赖的一些头文件和静态库，比如absl  cub  double_conversion  eigen  fft2d  gemmlowp  googletest  nsync  re2会自动全部安装。
+
+```shell
+sudo apt-get install autoconf automake libtool curl make g++ unzip zlib1g-dev git
+bash tensorflow/contrib/makefile/build_all_linux.sh
+```
+
+![image](https://user-images.githubusercontent.com/36963108/164013113-1c2bd70a-abec-4ee9-9756-e94b8453d803.png)
+
+
+
+
 
 
 
