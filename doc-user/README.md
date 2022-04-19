@@ -103,6 +103,25 @@ protoc --version
 cd protobuf-3.6.1/
 make uninstall
 
+或者：
+
+	cd protobuf-xxx
+	./autogen.sh
+	./configure
+	make			// 耗时较长
+	make check		// 非必须
+	sudo make install
+	sudo ldconfig
+ 
+ 如何卸载：protobuf的卸载
+sudo apt-get remove libprotobuf-dev
+which protoc    // 查看可执行文件路径
+sudo rm /usr/local/bin/protoc           // 删执行文件                                       //（也可能是/usr/bin/protoc）
+sudo rm -rf /usr/local/include/google   //头文件
+sudo rm -rf /usr/local/lib/libproto*    //库文件
+ 
+
+
 # 由于没有使用gpu版本的，所以./configure的过程中都是选择N,因此此C++TF配置的CPU版本
 cd tensorflow
 ./configure     
@@ -202,6 +221,32 @@ bash run.sh
 可以参考：https://abseil.io/docs/cpp/quickstart \
 下载所需包：git clone https://github.com/abseil/abseil-cpp \
 编译安装：
+
+```shell
+cd abseil-cpp/CMakeLists.txt  然后添加：add_definitions(-std=c++11)  set(CMAKE_CXX_STANDARD 11)
+
+# and then issuing `yum install cmake3` on the command line.
+cmake_minimum_required(VERSION 3.5)
+set(CMAKE_CXX_STANDARD 11)
+add_definitions(-std=c++11)
+
+
+
+
+cd abseil-cpp
+mkdir build && mkdir install && cd build
+cmake -DCMAKE_INSTALL_PREFIX=../install/ DABSL_PROPAGATE_CXX_STD=ON -DABSL_PROPAGATE_CXX_STD=ON  -DCMAKE_CXX_STANDARD=11 ..  
+make
+make install
+
+```
+头文件就在install/目录中，只要将文件夹include中的absl文件夹复制到/usr/include目录即可。
+
+cp -R install/include/absl/ /usr/include/
+
+参考来源：https://blog.csdn.net/qiuguolu1108/article/details/106445859?spm=1001.2101.3001.6650.4&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-4.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-4.pc_relevant_paycolumn_v3&utm_relevant_index=7
+
+![image](https://user-images.githubusercontent.com/36963108/164037763-56148eb0-9d1b-4026-8a90-c6aa54e40968.png)
 
 
 
