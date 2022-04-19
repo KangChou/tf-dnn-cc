@@ -1,5 +1,5 @@
 
-# 阿里云构建tensorflow 1.15 c++环境
+# 阿里云镜像源构建tensorflow 1.15 c++环境
 
 ## ENV 
 
@@ -23,6 +23,8 @@ Build timestamp as int: 1559819105
 
 ```shell
 apt-get update --fix-missing
+
+# 阿里云源
 sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
 sed -i 's/security.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list       
 apt-get update --fix-missing
