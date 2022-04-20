@@ -244,7 +244,7 @@ make install
 ### 头文件迁移
 头文件就在install/目录中，只要将文件夹include中的absl文件夹复制到/usr/include目录即可。
 
-cp -R install/include/absl/ /usr/include/
+cp -r install/include/absl/ /usr/include/
 
 
 ### 静态库文件生成
@@ -257,44 +257,27 @@ cp libabsl.a /usr/lib
 将生成的库复制到系统路径，这样abseil库就安装好了。
 
 ```shell
-/lib# find ./ -name "*.o" | xargs ar cr libabsl.a
-root@ovo:~/cudnn_samples_v8/tf_cc_demo/demo/abseil-cpp/install/lib# ls
-cmake                                     libabsl_int128.a
-libabsl.a                                 libabsl_leak_check.a
-libabsl_bad_any_cast_impl.a               libabsl_log_severity.a
-libabsl_bad_optional_access.a             libabsl_low_level_hash.a
-libabsl_bad_variant_access.a              libabsl_malloc_internal.a
-libabsl_base.a                            libabsl_periodic_sampler.a
-libabsl_city.a                            libabsl_random_distributions.a
-libabsl_civil_time.a                      libabsl_random_internal_distribution_test_util.a
-libabsl_cord.a                            libabsl_random_internal_platform.a
-libabsl_cord_internal.a                   libabsl_random_internal_pool_urbg.a
-libabsl_cordz_functions.a                 libabsl_random_internal_randen.a
-libabsl_cordz_handle.a                    libabsl_random_internal_randen_hwaes.a
-libabsl_cordz_info.a                      libabsl_random_internal_randen_hwaes_impl.a
-libabsl_cordz_sample_token.a              libabsl_random_internal_randen_slow.a
-libabsl_debugging_internal.a              libabsl_random_internal_seed_material.a
-libabsl_demangle_internal.a               libabsl_random_seed_gen_exception.a
-libabsl_examine_stack.a                   libabsl_random_seed_sequences.a
-libabsl_exponential_biased.a              libabsl_raw_hash_set.a
-libabsl_failure_signal_handler.a          libabsl_raw_logging_internal.a
-libabsl_flags.a                           libabsl_scoped_set_env.a
-libabsl_flags_commandlineflag.a           libabsl_spinlock_wait.a
-libabsl_flags_commandlineflag_internal.a  libabsl_stacktrace.a
-libabsl_flags_config.a                    libabsl_status.a
-libabsl_flags_internal.a                  libabsl_statusor.a
-libabsl_flags_marshalling.a               libabsl_strerror.a
-libabsl_flags_parse.a                     libabsl_str_format_internal.a
-libabsl_flags_private_handle_accessor.a   libabsl_strings.a
-libabsl_flags_program_name.a              libabsl_strings_internal.a
-libabsl_flags_reflection.a                libabsl_symbolize.a
-libabsl_flags_usage.a                     libabsl_synchronization.a
-libabsl_flags_usage_internal.a            libabsl_throw_delegate.a
-libabsl_graphcycles_internal.a            libabsl_time.a
-libabsl_hash.a                            libabsl_time_zone.a
-libabsl_hashtablez_sampler.a              pkgconfig
-root@ovo:~/cudnn_samples_v8/tf_cc_demo/demo/abseil-cpp/install/lib# cp libabsl.a /usr/lib 
 
+abseil-cpp/build# find ./ -name "*.o" | xargs ar cr libabsl.a
+root@ovo:~/cudnn_samples_v8/tf_cc_demo/abseil-cpp/build# du -sh *
+362M    absl
+4.0K    abslConfig.cmake
+407M    bin
+36K     CMakeCache.txt
+2.1M    CMakeFiles
+4.0K    cmake_install.cmake
+4.0K    CTestTestfile.cmake
+4.0K    DartConfiguration.tcl
+3.6M    googletest-build
+1.2M    googletest-external
+4.4M    googletest-src
+28K     install_manifest.txt
+3.9M    lib
+365M    libabsl.a
+172K    Makefile
+8.0K    Testing
+root@ovo:~/cudnn_samples_v8/tf_cc_demo/abseil-cpp/build# 
+root@ovo:~/cudnn_samples_v8/tf_cc_demo/abseil-cpp/build# cp libabsl.a /usr/lib
 
 ```
 
@@ -310,7 +293,7 @@ make
 make install
 apt update
  
-
+注意：静态文件的生成同上步骤。
 
 
 ```
@@ -319,6 +302,25 @@ apt update
 
 
 ### demo测试
+```cpp
+// g++ main.cc -labsl -o main && ./main
+#include <iostream>
+#include <absl/strings/string_view.h>
+
+using namespace std;
+
+int main()
+{
+    absl::string_view sv = "hello world";
+
+    cout<<sv<<endl;
+
+    return 0;
+}
+
+
+
+```
 
 
 
