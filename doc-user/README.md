@@ -212,6 +212,7 @@ bash run.sh
 -- Installing: /usr/local/include/eigen3/Eigen/SparseCore
 ```
 
+## 安装abseil
 解决如下报错：
 ```shell
 /tensorflow/core/lib/core/errors.h:21:10: fatal error: absl/strings/str_join.h: No such file or directory
@@ -219,7 +220,8 @@ bash run.sh
           ^~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 可以参考：https://abseil.io/docs/cpp/quickstart \
-下载所需包：git clone https://github.com/abseil/abseil-cpp \
+https://github.com/abseil/abseil-cpp/blob/master/CMake/README.md \
+下载所需包：git clone https://github.com/abseil/abseil-cpp.git \
 编译安装：
 
 ```shell
@@ -231,22 +233,95 @@ set(CMAKE_CXX_STANDARD 11)
 add_definitions(-std=c++11)
 
 
-
-
 cd abseil-cpp
 mkdir build && mkdir install && cd build
+# 安装到指定文件路径，这个方法只是理解安装逻辑，最后还有移动到/usr/目录下，很麻烦，这里只是学习使用
 cmake -DCMAKE_INSTALL_PREFIX=../install/ DABSL_PROPAGATE_CXX_STD=ON -DABSL_PROPAGATE_CXX_STD=ON  -DCMAKE_CXX_STANDARD=11 ..  
 make
 make install
 
 ```
+### 头文件迁移
 头文件就在install/目录中，只要将文件夹include中的absl文件夹复制到/usr/include目录即可。
 
 cp -R install/include/absl/ /usr/include/
 
-参考来源：https://blog.csdn.net/qiuguolu1108/article/details/106445859?spm=1001.2101.3001.6650.4&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-4.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-4.pc_relevant_paycolumn_v3&utm_relevant_index=7
 
-![image](https://user-images.githubusercontent.com/36963108/164037763-56148eb0-9d1b-4026-8a90-c6aa54e40968.png)
+### 静态库文件生成
+默认产生了一大堆静态库文件，使用不方便，所以我们将所有的静态库打包成一个libabsl.a静态库。
+find ./ -name "*.o" | xargs ar cr libabsl.a
+进入刚才创建的build目录，执行上面的命令，会生成一个静态库libabsl.a。
+
+cp libabsl.a /usr/lib
+
+将生成的库复制到系统路径，这样abseil库就安装好了。
+
+```shell
+/lib# find ./ -name "*.o" | xargs ar cr libabsl.a
+root@ovo:~/cudnn_samples_v8/tf_cc_demo/demo/abseil-cpp/install/lib# ls
+cmake                                     libabsl_int128.a
+libabsl.a                                 libabsl_leak_check.a
+libabsl_bad_any_cast_impl.a               libabsl_log_severity.a
+libabsl_bad_optional_access.a             libabsl_low_level_hash.a
+libabsl_bad_variant_access.a              libabsl_malloc_internal.a
+libabsl_base.a                            libabsl_periodic_sampler.a
+libabsl_city.a                            libabsl_random_distributions.a
+libabsl_civil_time.a                      libabsl_random_internal_distribution_test_util.a
+libabsl_cord.a                            libabsl_random_internal_platform.a
+libabsl_cord_internal.a                   libabsl_random_internal_pool_urbg.a
+libabsl_cordz_functions.a                 libabsl_random_internal_randen.a
+libabsl_cordz_handle.a                    libabsl_random_internal_randen_hwaes.a
+libabsl_cordz_info.a                      libabsl_random_internal_randen_hwaes_impl.a
+libabsl_cordz_sample_token.a              libabsl_random_internal_randen_slow.a
+libabsl_debugging_internal.a              libabsl_random_internal_seed_material.a
+libabsl_demangle_internal.a               libabsl_random_seed_gen_exception.a
+libabsl_examine_stack.a                   libabsl_random_seed_sequences.a
+libabsl_exponential_biased.a              libabsl_raw_hash_set.a
+libabsl_failure_signal_handler.a          libabsl_raw_logging_internal.a
+libabsl_flags.a                           libabsl_scoped_set_env.a
+libabsl_flags_commandlineflag.a           libabsl_spinlock_wait.a
+libabsl_flags_commandlineflag_internal.a  libabsl_stacktrace.a
+libabsl_flags_config.a                    libabsl_status.a
+libabsl_flags_internal.a                  libabsl_statusor.a
+libabsl_flags_marshalling.a               libabsl_strerror.a
+libabsl_flags_parse.a                     libabsl_str_format_internal.a
+libabsl_flags_private_handle_accessor.a   libabsl_strings.a
+libabsl_flags_program_name.a              libabsl_strings_internal.a
+libabsl_flags_reflection.a                libabsl_symbolize.a
+libabsl_flags_usage.a                     libabsl_synchronization.a
+libabsl_flags_usage_internal.a            libabsl_throw_delegate.a
+libabsl_graphcycles_internal.a            libabsl_time.a
+libabsl_hash.a                            libabsl_time_zone.a
+libabsl_hashtablez_sampler.a              pkgconfig
+root@ovo:~/cudnn_samples_v8/tf_cc_demo/demo/abseil-cpp/install/lib# cp libabsl.a /usr/lib 
+
+
+```
+
+
+使用下面的安装方法直接默认安装就可以了：
+```shell
+# rm -rf build 
+# mkdir build && mkdir install && cd build
+mkdir build && cd build
+# # cmake -DCMAKE_INSTALL_PREFIX=../install/ DABSL_PROPAGATE_CXX_STD=ON -DABSL_PROPAGATE_CXX_STD=ON  -DCMAKE_CXX_STANDARD=11 ..  
+cmake DABSL_PROPAGATE_CXX_STD=ON -DABSL_BUILD_TESTING=ON -DABSL_USE_GOOGLETEST_HEAD=ON -DCMAKE_CXX_STANDARD=11 ..  
+make
+make install
+apt update
+ 
+
+
+
+```
+![image](https://user-images.githubusercontent.com/36963108/164135747-6deae382-7010-4f6d-92cf-a6c1823e9125.png)
+
+
+
+### demo测试
+
+
+
 
 
 
