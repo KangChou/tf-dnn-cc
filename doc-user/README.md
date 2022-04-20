@@ -357,4 +357,7 @@ sudo apt install protobuf-compiler
 
 
 
+# 参考资料
+https://towardsdatascience.com/building-tensorflow-1-x-c-api-from-source-8f22592f183f
 
+https://github.com/ksachdeva/tensorflow-cc-examples/blob/master/examples/1_Introduction/src/hello-world.cc
