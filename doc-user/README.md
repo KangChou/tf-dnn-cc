@@ -337,7 +337,8 @@ int main()
 ```
 configure: WARNING: no configuration information is in third_party/googletest
 ```
-需要下载googletest，下载地址：https://github.com/google/googletest/releases，解压后放在./protobuf-3.10.1/third_party/googletest，然后执行./autogen.sh
+需要下载googletest，下载地址：https://github.com/google/googletest/releases， \
+解压后放在./protobuf-3.10.1/third_party/googletest，然后执行./autogen.sh
 
 wget https://github.com/google/googletest/archive/refs/tags/release-1.11.0.tar.gz
 
@@ -351,7 +352,7 @@ wget https://github.com/google/googletest/archive/refs/tags/release-1.11.0.tar.g
 
 补充：一键安装
 
-sudo apt install protobuf-compiler
+sudo apt install protobuf-compiler \
 尝试 sudo apt-get remove protobuf-compiler 而不是通过 apt-get install 重新安装
 
 
@@ -364,4 +365,5 @@ https://github.com/ksachdeva/tensorflow-cc-examples/blob/master/examples/1_Intro
 
 makefile c++ tensorflow :https://vlearningit.wordpress.com/installation/compile-tensorflow-c-from-the-source-in-ubuntu-18-04-lts/
 
-bazel c++ tensorflow : https://blog.csdn.net/asialee_bird/article/details/100990483
+bazel c++ tensorflow : https://blog.csdn.net/asialee_bird/article/details/100990483  \
+https://vlearningit.wordpress.com/installation/compile-tensorflow-c-from-the-source-in-ubuntu-18-04-lts/
