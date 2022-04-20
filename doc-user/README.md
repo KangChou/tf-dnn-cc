@@ -31,7 +31,7 @@ apt-get update --fix-missing
 
 # Installation of general dependencies
 apt-get install -y build-essential clang-format clang-tidy clang git git-lfs wget curl gnupg openjdk-11-jdk openjdk-11-jre lcov
-
+apt-get install autoconf automake libtool curl make g++ unzip
 # Installation of FFMPEG
 
 apt-get install -y libavcodec-dev libavformat-dev libavfilter-dev libavdevice-dev libswresample-dev libswscale-dev ffmpeg
@@ -80,7 +80,8 @@ git checkout r1.15
 # sudo apt-get install autoconf automake libtool
 wget -O protobuf.tar.gz https://github.com/protocolbuffers/protobuf/releases/download/v3.6.1/protobuf-python-3.6.1.tar.gz \ 
 && tar xvf protobuf.tar.gz
-mkdir protobuf_bin
+
+mkdir $HOME/protobuf_bin  #新建安装路径
 cd protobuf-3.6.1
 ./autogen.sh
 # ./autogen.sh && ./configure
@@ -91,6 +92,11 @@ cd protobuf-3.6.1
 ./configure --prefix=$HOME/protobuf_bin #(自己新建的目录)
 make -j4
 make install 
+
+#./configure
+#make
+#make check
+#make install
 
 vim ~/.bashrc
 export PATH=$PATH:$HOME/protobuf_bin/bin
@@ -321,7 +327,31 @@ int main()
 
 
 ```
+### 解决port_def.inc编译的问题
+原因：google/protobuf/port_def.inc包含在 protoc 版本 >= 3.7.0 生成的标头中。 \
+因此需要重新安装大于3.6的版本：#https://github.com/protocolbuffers/protobuf/archive/refs/tags/v3.6.0.tar.gz
+编译方法同上。
 
+
+```
+configure: WARNING: no configuration information is in third_party/googletest
+```
+需要下载googletest，下载地址：https://github.com/google/googletest/releases，解压后放在./protobuf-3.10.1/third_party/googletest，然后执行./autogen.sh
+
+wget https://github.com/google/googletest/archive/refs/tags/release-1.11.0.tar.gz
+
+
+如果不用了，卸载方法如下：
+
+用命令找到安装目录：which protoc
+
+删除安装目录的安装包，例如下面的命令：rm /usr/bin/protoc  && rm -rf /root/protobuf_bin/
+
+
+补充：一键安装
+
+sudo apt install protobuf-compiler
+尝试 sudo apt-get remove protobuf-compiler 而不是通过 apt-get install 重新安装
 
 
 
