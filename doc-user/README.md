@@ -363,4 +363,5 @@ https://towardsdatascience.com/building-tensorflow-1-x-c-api-from-source-8f22592
 https://github.com/ksachdeva/tensorflow-cc-examples/blob/master/examples/1_Introduction/src/hello-world.cc
 
 makefile c++ tensorflow :https://vlearningit.wordpress.com/installation/compile-tensorflow-c-from-the-source-in-ubuntu-18-04-lts/
+
 bazel c++ tensorflow : https://blog.csdn.net/asialee_bird/article/details/100990483
