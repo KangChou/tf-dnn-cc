@@ -6,9 +6,12 @@
 - Ubuntu 18.04.6 LTS \n \l
 - cuda111.1+cudnn8
 - conda+python3.6
--  protoc --version   # ----> libprotoc 2.6.1
+-  protoc --version   # ----> libprotoc 3.8
 -  bazel 0.26.1
 -  tensorflow 1.15
+
+tf1.14对应：bazel-0.24.1       protobuf-all-3.7.0.zip(3.7.1据说也可以) \
+tf1.13对应：bazel-0.19.2       protobuf-3.6.1.2
 
 ```shell
 bazel version
@@ -372,3 +375,7 @@ TensorFlow的protobuf版本 https://blog.csdn.net/Li_suhuan/article/details/1210
 查看对应地址：https://github.com/tensorflow/tensorflow/blob/v1.15.5/tensorflow/workspace.bzl     
 
 bazel   tensorflow 版本对应   https://www.tensorflow.org/install/source
+
+Linux下tensorflow1.13.1 C++ API的编译和使用:https://codeantenna.com/a/YXGRwtMtbf
+
+Centos下编译tensorflow1.14 c++ API的姿势:https://www.cnblogs.com/dzzy/p/13493876.html
