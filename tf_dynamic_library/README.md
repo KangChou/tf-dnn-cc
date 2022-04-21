@@ -20,7 +20,7 @@ https://github.com/jinay1991/spleeter/releases/download/v1.2/libtensorflow_cc-2.
 
 docker 使用方法：https://blog.csdn.net/weixin_41194129/article/details/113832695?spm=1001.2014.3001.5502
 
-由于该环境是使用寿命都有的docker+ubuntu 配置的，所有需要安装glibc-2.27
+由于该环境是使用docker+ubuntu配置的但是未安装glibc-2.27，所有需要安装glibc-2.27
 ```shell
 apt-get update --fix-missing
 sudo apt-get install gawk bison
