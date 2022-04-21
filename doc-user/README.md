@@ -367,3 +367,8 @@ makefile c++ tensorflow :https://vlearningit.wordpress.com/installation/compile-
 
 bazel c++ tensorflow : https://blog.csdn.net/asialee_bird/article/details/100990483  \
 https://vlearningit.wordpress.com/installation/compile-tensorflow-c-from-the-source-in-ubuntu-18-04-lts/
+
+TensorFlow的protobuf版本 https://blog.csdn.net/Li_suhuan/article/details/121041248     \
+查看对应地址：https://github.com/tensorflow/tensorflow/blob/v1.15.5/tensorflow/workspace.bzl     
+
+bazel   tensorflow 版本对应   https://www.tensorflow.org/install/source
