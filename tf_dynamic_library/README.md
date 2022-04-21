@@ -14,9 +14,9 @@ https://github.com/jinay1991/spleeter/releases/download/v1.2/libtensorflow_cc-2.
 ```
 
 # 开发环境
-- ubuntu16.04
+- ubuntu18.04
 - ananconda3+python3.6
-- docker pull ckck2021/ubuntu16.04:py36-aliyun
+- docker pull ckck2021/ubuntu18.04:py36-aliyun
 
 docker 使用方法：https://blog.csdn.net/weixin_41194129/article/details/113832695?spm=1001.2014.3001.5502
 
