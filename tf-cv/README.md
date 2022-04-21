@@ -1,0 +1,3 @@
+Ubuntu16.04安装cmake以及编译opencv带上contrib的gpu版本
+
+http://www.voycn.com/article/ubuntu1604anzhuangcmakeyijibianyiopencvdaishangcontribdegpubanben
