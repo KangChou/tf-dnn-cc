@@ -24,6 +24,8 @@ make
 make check 
 sudo make install
 
+
+wget https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.gz $ tar -xzvf eigen-3.3.7.tar.gz
 wget http://bitbucket.org/eigen/eigen/get/3.3.4.tar.bz2
 tar -xvjf 3.3.4.tar.bz2
 cd eigen-folder
