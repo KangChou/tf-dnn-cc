@@ -223,6 +223,8 @@ bash run.sh
 ```
 
 ## 安装abseil
+https://github.com/abseil/abseil-cpp/archive/refs/tags/20190808.1.tar.gz 
+
 解决如下报错：
 ```shell
 /tensorflow/core/lib/core/errors.h:21:10: fatal error: absl/strings/str_join.h: No such file or directory
