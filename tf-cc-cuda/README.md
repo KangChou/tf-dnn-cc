@@ -11,7 +11,7 @@
 
 当然你也可以使用bazel工具来编译程序：BUILD
 
-我这里总计了一看就懂是bzael构建c++项目的方法：https://github.com/KangChou/deep_c_cc/tree/main/bazel_cc_demo
+我这里整理了一看就懂是bzael构建c++项目的方法：https://github.com/KangChou/deep_c_cc/tree/main/bazel_cc_demo
 
 ```shell
 load("//tensorflow:tensorflow.bzl", "tf_cc_binary")
