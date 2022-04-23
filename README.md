@@ -1,5 +1,5 @@
 # tf-dnn-cc
-TensorFlow C++实现深度学习模型demo
+TensorFlow C++实现深度学习模型
 
 
 TF C++环境配置：https://danny270degree.blogspot.com/2018/07/tensorflow-how-to-build-your-c-program.html
