@@ -82,11 +82,11 @@ git checkout r1.15
 
 
 # sudo apt-get install autoconf automake libtool
-wget -O protobuf.tar.gz https://github.com/protocolbuffers/protobuf/releases/download/v3.6.1/protobuf-python-3.6.1.tar.gz \ 
+wget -O protobuf.tar.gz https://github.com/protocolbuffers/protobuf/releases/download/v3.8.0/protobuf-python-3.8.0.tar.gz \ 
 && tar xvf protobuf.tar.gz
 
 mkdir $HOME/protobuf_bin  #新建安装路径
-cd protobuf-3.6.1
+cd protobuf-3.8.0
 ./autogen.sh
 # ./autogen.sh && ./configure
 # make && make install && ldconfig
@@ -110,7 +110,7 @@ source ~/.bashrc
 which protoc
 protoc --version
 # 如果想要卸载protobuf
-cd protobuf-3.6.1/
+cd protobuf-3.8.0/
 make uninstall
 
 或者：
@@ -311,6 +311,9 @@ apt update
 ```
 ![image](https://user-images.githubusercontent.com/36963108/164135747-6deae382-7010-4f6d-92cf-a6c1823e9125.png)
 
+
+还有一个方法，git CLONE上面的源码存放在tensorflow/contrib/makefile/downloads 目录下
+![image](https://user-images.githubusercontent.com/36963108/164883295-09dbe4b2-d38e-4452-b6e1-d31f6a12f9f8.png)
 
 
 ### demo测试
