@@ -1,5 +1,5 @@
 
-# 获取动态库
+# 获取TF2 C++动态库 进行调用
 https://github.com/jinay1991/spleeter/releases/download/v2.3/libtensorflow_cc-2.3.0-linux.tar.gz
 
 https://github.com/jinay1991/spleeter/releases/download/v1.2/libtensorflow_cc-2.1.0-linux.tar.gz
