@@ -76,6 +76,10 @@ target_link_libraries(demo /root/tensorflow/bazel-bin/tensorflow/libtensorflow_c
 ```
 
 
-# 案例分析
+# 参考案例分析
+
+推荐的学习链接：https://github.com/skylook/tensorflow_cpp
+
+
 
 
