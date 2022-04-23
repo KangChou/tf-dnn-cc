@@ -9,6 +9,29 @@
 
 源码来自：https://github.com/theflofly/dnn_tensorflow_cpp
 
+当然你也可以使用bazel工具来编译程序：BUILD
+
+```shell
+load("//tensorflow:tensorflow.bzl", "tf_cc_binary")
+
+tf_cc_binary(
+    name = "model",
+    srcs = [
+        "model.cc",
+        "data_set.h",
+        "data_set.cc"
+    ],
+    deps = [
+        "//tensorflow/cc:gradients",
+        "//tensorflow/cc:grad_ops",
+        "//tensorflow/cc:cc_ops",
+        "//tensorflow/cc:client_session",
+        "//tensorflow/core:tensorflow"
+    ],
+    data = ["normalized_car_features.csv"]
+)
+
+```
 
 
 
